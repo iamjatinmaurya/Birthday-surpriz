@@ -1,0 +1,589 @@
+* {
+    box-sizing: border-box
+}
+
+:root {
+    --pink: #f7c6d9;
+    --deep: #b83269;
+    --ink: #71324f;
+    --cream: #fff8f7
+}
+
+body {
+    margin: 0;
+    min-height: 100svh;
+    display: grid;
+    place-items: center;
+    background: linear-gradient(145deg, #ffe9f0, #f5bcd3 55%, #f9dce7);
+    font-family: "DM Sans", sans-serif;
+    color: var(--ink);
+    overflow-x: hidden
+}
+
+.ambient {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(circle at 15% 20%, #fff9 0 2px, transparent 3px), radial-gradient(circle at 80% 70%, #fff8 0 2px, transparent 3px);
+    background-size: 95px 100px;
+    opacity: .8
+}
+
+.phone {
+    width: min(100%, 430px);
+    min-height: min(850px, 100svh);
+    height: min(850px, 100svh);
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(180deg, #fff0f5, #f8c5d9 65%, #f4b5d0);
+    box-shadow: 0 20px 70px #9d4e7040
+}
+
+.screen {
+    position: absolute;
+    inset: 0;
+    padding: 58px 25px 36px;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    animation: fade .55s ease both
+}
+
+.screen.active {
+    display: flex
+}
+
+@keyframes fade {
+    from {
+        opacity: 0;
+        transform: translateY(12px)
+    }
+
+    to {
+        opacity: 1;
+        transform: none
+    }
+}
+
+.script {
+    font-family: "Sacramento", "Playfair Display", cursive;
+    font-weight: 400;
+    color: #a52f64;
+    font-size: clamp(2.2rem, 9vw, 3.4rem);
+    line-height: 1.05;
+    margin: 8px 0 18px
+}
+
+.eyebrow,
+.tiny-label {
+    font-size: .66rem;
+    letter-spacing: .18em;
+    font-weight: 700;
+    color: #b65a80
+}
+
+.subtext {
+    font-size: .9rem;
+    line-height: 1.6;
+    max-width: 290px;
+    color: #87516a;
+    margin: 8px auto 22px
+}
+
+.micro {
+    font-size: .72rem;
+    color: #a46b82;
+    margin-top: 18px
+}
+
+.sound-toggle {
+    position: fixed;
+    z-index: 10;
+    top: 15px;
+    right: 15px;
+    border: 0;
+    border-radius: 50%;
+    width: 38px;
+    height: 38px;
+    background: #fff9;
+    color: #a52f64;
+    font-size: 20px;
+    box-shadow: 0 4px 12px #9b456322
+}
+
+.qr-card {
+    background: #fff9f8;
+    border: 1px solid #fff;
+    border-radius: 25px;
+    padding: 22px 20px 15px;
+    box-shadow: 0 15px 35px #a64b7026;
+    margin: 25px 0
+}
+
+.heart-frame {
+    width: 205px;
+    height: 180px;
+    display: grid;
+    place-items: center;
+    position: relative;
+    background: #f5b7ce;
+    clip-path: path("M102 174 C82 155 4 105 4 54 C4 4 67 -12 102 35 C137 -12 200 4 200 54 C200 105 122 155 102 174 Z")
+}
+
+#qrcode {
+    background: white;
+    padding: 8px;
+    border-radius: 9px;
+    z-index: 1
+}
+
+#qrcode img,
+#qrcode canvas {
+    display: block !important;
+    width: 112px !important;
+    height: 112px !important
+}
+
+.qr-caption {
+    font-family: "Playfair Display", serif;
+    font-style: italic;
+    font-size: .83rem;
+    margin: 14px 0 0
+}
+
+.pill-button,
+.soft-button {
+    border: 0;
+    border-radius: 30px;
+    padding: 13px 27px;
+    font-weight: 700;
+    letter-spacing: .02em;
+    cursor: pointer;
+    transition: .2s
+}
+
+.pill-button {
+    background: linear-gradient(135deg, #d94c83, #ad285f);
+    color: white;
+    box-shadow: 0 7px 16px #a52f6440
+}
+
+.pill-button:active,
+.soft-button:active {
+    transform: scale(.96)
+}
+
+.soft-button {
+    background: #fff9;
+    color: #a43a68;
+    border: 1px solid #eab1c8
+}
+
+.lock-icon {
+    font-size: 3.5rem;
+    color: #c43f78;
+    background: #fff9;
+    border-radius: 50%;
+    width: 95px;
+    height: 95px;
+    display: grid;
+    place-items: center;
+    box-shadow: 0 10px 25px #9b456322;
+    margin-bottom: 20px
+}
+
+.dots {
+    display: flex;
+    gap: 14px;
+    margin: 20px 0
+}
+
+.dots i {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 1px solid #b64b78
+}
+
+.dots i.filled {
+    background: #b83269
+}
+
+.keypad {
+    display: grid;
+    grid-template-columns: repeat(3, 65px);
+    gap: 10px
+}
+
+.keypad button {
+    height: 52px;
+    border: 0;
+    border-radius: 17px;
+    background: #fff9;
+    color: #a33366;
+    font-size: 1.15rem;
+    font-weight: 700;
+    box-shadow: 0 4px 12px #a64b7020;
+    cursor: pointer
+}
+
+.keypad .utility {
+    background: #f2aeca
+}
+
+.error {
+    height: 18px;
+    color: #b32754;
+    font-size: .76rem;
+    opacity: 0
+}
+
+.error.show {
+    opacity: 1
+}
+
+.birthday-title {
+    font-size: 3.2rem
+}
+
+.person-name {
+    color: #9e285e
+}
+
+.party-art {
+    font-size: 4.7rem;
+    display: flex;
+    align-items: end;
+    gap: 5px;
+    margin: 12px
+}
+
+.party-art span {
+    filter: drop-shadow(0 7px 4px #a64b7020)
+}
+
+.cake-mini {
+    font-size: 3.5rem
+}
+
+.sparkles {
+    color: #d64c86;
+    font-size: 1.3rem;
+    letter-spacing: .3em;
+    margin-bottom: 25px
+}
+
+.confetti {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image: radial-gradient(#f36c9d 2px, transparent 3px), radial-gradient(#fff 2px, transparent 3px), radial-gradient(#e6a64d 2px, transparent 3px);
+    background-size: 80px 90px, 110px 120px, 130px 100px;
+    opacity: .45;
+    animation: drift 8s linear infinite
+}
+
+@keyframes drift {
+    to {
+        background-position: 0 300px, 30px 400px, 50px 250px
+    }
+}
+
+.large {
+    font-size: 5.5rem;
+    margin-bottom: 25px
+}
+
+.button-row {
+    display: flex;
+    gap: 12px;
+    align-items: center
+}
+
+.counter {
+    position: absolute;
+    top: 35px;
+    right: 25px;
+    background: #fff9;
+    padding: 8px 12px;
+    border-radius: 20px
+}
+
+.balloon-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 110px);
+    gap: 20px;
+    margin: 22px
+}
+
+.balloon {
+    border: 0;
+    background: transparent;
+    font-size: 4.5rem;
+    cursor: pointer;
+    filter: drop-shadow(0 8px 6px #a64b7020);
+    animation: bob 2.5s ease-in-out infinite
+}
+
+.balloon:nth-child(2) {
+    animation-delay: .4s
+}
+
+.balloon:nth-child(3) {
+    animation-delay: .8s
+}
+
+.balloon:nth-child(4) {
+    animation-delay: 1.2s
+}
+
+@keyframes bob {
+    50% {
+        transform: translateY(-12px) rotate(5deg)
+    }
+}
+
+.balloon.popped {
+    animation: pop .35s forwards
+}
+
+@keyframes pop {
+    to {
+        transform: scale(1.7);
+        opacity: 0
+    }
+}
+
+.cake-scene {
+    position: relative;
+    width: 230px;
+    height: 210px;
+    margin: 20px 0 5px;
+    display: flex;
+    align-items: end;
+    justify-content: center
+}
+
+.cake {
+    position: absolute;
+    bottom: 28px;
+    width: 180px;
+    height: 95px;
+    border-radius: 14px 14px 24px 24px;
+    background: linear-gradient(#f8a5c1 0 25%, #fff1e9 25%);
+    box-shadow: inset 0 -12px #e98aad, 0 10px 15px #9d4e7030
+}
+
+.icing {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 25px;
+    background: #fff4ef;
+    border-radius: 14px 14px 50% 50%
+}
+
+.sprinkles {
+    position: absolute;
+    top: 42px;
+    left: 25px;
+    color: #bd4777
+}
+
+.plate {
+    position: absolute;
+    bottom: 18px;
+    width: 220px;
+    height: 15px;
+    border-radius: 50%;
+    background: #fff9;
+    box-shadow: 0 5px 8px #9d4e7020
+}
+
+.candle {
+    position: absolute;
+    bottom: 122px;
+    width: 10px;
+    height: 48px;
+    background: repeating-linear-gradient(45deg, #fff 0 5px, #e95b91 5px 10px);
+    z-index: 2;
+    border-radius: 4px
+}
+
+.flame {
+    position: absolute;
+    bottom: 170px;
+    color: #ff9c35;
+    font-size: 1.8rem;
+    z-index: 3;
+    animation: flicker .6s infinite alternate
+}
+
+@keyframes flicker {
+    to {
+        transform: scale(.8) rotate(8deg);
+        opacity: .7
+    }
+}
+
+.flame.out {
+    display: none
+}
+
+.bouquet {
+    font-size: 8rem;
+    margin: 20px 0;
+    filter: drop-shadow(0 12px 10px #a64b7025);
+    animation: bob 3s infinite
+}
+
+.bubble {
+    position: absolute;
+    background: #fff9;
+    border-radius: 25px;
+    padding: 9px 13px;
+    font-size: .7rem;
+    box-shadow: 0 5px 15px #a64b7018
+}
+
+.bubble-a {
+    top: 24%;
+    left: 7%
+}
+
+.bubble-b {
+    top: 30%;
+    right: 5%
+}
+
+.bubble-c {
+    bottom: 28%;
+    left: 5%
+}
+
+.envelope {
+    width: 175px;
+    height: 120px;
+    border: 0;
+    background: linear-gradient(145deg, #fff8f1, #f3d2c9);
+    border-radius: 12px;
+    box-shadow: 0 14px 25px #9d4e7030;
+    cursor: pointer;
+    font-size: 4rem;
+    color: #b64b78;
+    position: relative
+}
+
+.envelope span {
+    filter: drop-shadow(0 2px 1px #b64b7830)
+}
+
+.letter-card {
+    width: 100%;
+    max-height: 68%;
+    overflow: auto;
+    text-align: center;
+    background: #fffaf2;
+    border: 5px double #edc7bc;
+    border-radius: 13px;
+    padding: 22px 18px;
+    box-shadow: 0 10px 25px #9d4e7025;
+    margin-bottom: 18px;
+    font-family: "Playfair Display", serif;
+    font-size: .85rem;
+    line-height: 1.7;
+    color: #775268
+}
+
+.letter-card h2 {
+    font-size: 2rem;
+    margin: 2px 0 15px
+}
+
+.letter-heart {
+    color: #d94c83;
+    font-size: 1.3rem
+}
+
+.signoff {
+    font-style: italic;
+    color: #a52f64
+}
+
+.gift-heading {
+    font-size: 3rem
+}
+
+.gift-box {
+    border: 0;
+    background: transparent;
+    font-size: 7rem;
+    cursor: pointer;
+    filter: drop-shadow(0 12px 8px #9d4e7030);
+    animation: bob 2s infinite
+}
+
+.gift-box.opened {
+    animation: giftopen .7s forwards
+}
+
+@keyframes giftopen {
+    50% {
+        transform: scale(1.35) rotate(-10deg)
+    }
+
+    100% {
+        transform: scale(0);
+        opacity: 0
+    }
+}
+
+.final-name {
+    font-size: 3.7rem;
+    margin: 18px 0
+}
+
+.final-heart {
+    font-size: 6rem;
+    color: #d94c83;
+    animation: heartbeat 1.2s infinite
+}
+
+@keyframes heartbeat {
+    50% {
+        transform: scale(1.16)
+    }
+}
+
+.final-confetti {
+    font-size: 1.6rem;
+    color: #d94c83;
+    margin-bottom: 25px
+}
+
+@media(max-height:700px) {
+    .screen {
+        padding-top: 38px;
+        padding-bottom: 20px
+    }
+
+    .script {
+        margin: 4px 0 10px
+    }
+
+    .party-art {
+        margin: 5px
+    }
+
+    .letter-card {
+        max-height: 60%
+    }
+
+    .bouquet {
+        font-size: 6rem;
+        margin: 8px
+    }
+}
